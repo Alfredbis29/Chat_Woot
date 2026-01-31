@@ -1,0 +1,23 @@
+<div class="hc-page">
+  <header class="hc-header">
+    <div class="hc-header__content">
+      <h1 class="hc-title">Search Results</h1>
+      <p class="hc-subtitle">Searching for: "<%= @query %>"</p>
+    </div>
+  </header>
+
+  <main class="hc-main">
+    <section class="hc-section">
+      <% if @query.present? %>
+        <p>Search functionality is coming soon. For now, browse our articles below:</p>
+      <% else %>
+        <p>Please enter a search term to find articles.</p>
+      <% end %>
+
+      <div style="margin-top: 2rem;">
+        <%= link_to "← Back to Help Center", root_path, style: "color: #3b82f6; text-decoration: none; font-weight: 500;" %>
+      </div>
+    </section>
+  </main>
+</div>
+

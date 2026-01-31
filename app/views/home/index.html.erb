@@ -6,14 +6,10 @@
         Find answers, learn best practices, and get the most out of ChatWoot.
       </p>
 
-      <form class="hc-search">
-        <input
-          type="search"
-          placeholder="Search for articles, topics, or questions..."
-          aria-label="Search help center"
-        />
-        <button type="submit">Search</button>
-      </form>
+      <%= form_with url: search_path, method: :get, local: true, class: "hc-search" do |form| %>
+        <%= form.search_field :q, placeholder: "Search for articles, topics, or questions...", aria: { label: "Search help center" } %>
+        <%= form.submit "Search" %>
+      <% end %>
     </div>
   </header>
 
@@ -24,17 +20,17 @@
         <article class="hc-card">
           <h3>Create your first inbox</h3>
           <p>Set up an email, website, or social inbox and start receiving messages.</p>
-          <a href="#">Read guide →</a>
+          <%= link_to "Read guide →", article_path('create-first-inbox') %>
         </article>
         <article class="hc-card">
           <h3>Invite your team</h3>
           <p>Add agents, configure roles, and collaborate on conversations.</p>
-          <a href="#">Read guide →</a>
+          <%= link_to "Read guide →", article_path('invite-team') %>
         </article>
         <article class="hc-card">
           <h3>Set up automation</h3>
           <p>Use rules and canned responses to save time on repetitive tasks.</p>
-          <a href="#">Read guide →</a>
+          <%= link_to "Read guide →", article_path('setup-automation') %>
         </article>
       </div>
     </section>
@@ -45,21 +41,24 @@
         <article class="hc-card hc-card--compact">
           <h3>Reports &amp; analytics</h3>
           <p>Understand your team performance and conversation trends.</p>
+          <%= link_to "Learn more →", article_path('reports-analytics'), style: "margin-top: 0.5rem; display: inline-block;" %>
         </article>
         <article class="hc-card hc-card--compact">
           <h3>Integrations</h3>
           <p>Connect ChatWoot with channels and tools you already use.</p>
+          <%= link_to "Learn more →", article_path('integrations'), style: "margin-top: 0.5rem; display: inline-block;" %>
         </article>
         <article class="hc-card hc-card--compact">
           <h3>Security &amp; privacy</h3>
           <p>Learn how we protect your data and how to configure access.</p>
+          <%= link_to "Learn more →", article_path('security-privacy'), style: "margin-top: 0.5rem; display: inline-block;" %>
         </article>
       </div>
     </section>
   </main>
 
   <footer class="hc-footer">
-    <p>Can’t find what you’re looking for? <a href="#">Contact support</a>.</p>
+    <p>Can't find what you're looking for? <%= link_to "Contact support", contact_path %>.</p>
   </footer>
 </div>
 
