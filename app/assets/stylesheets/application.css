@@ -94,26 +94,45 @@ body {
 }
 
 .hc-search button {
-  padding: 1rem 2rem;
-  border-radius: 0.5rem;
+  padding: 1rem 2.5rem;
+  border-radius: 0.75rem;
   border: none;
-  background-color: #f97316;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.1s;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+}
+
+.hc-search button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
 }
 
 .hc-search button:hover {
-  background-color: #ea580c;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+}
+
+.hc-search button:hover::before {
+  left: 100%;
 }
 
 .hc-search button:active {
   transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
 }
 
 .hc-main {
