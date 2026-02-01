@@ -1,8 +1,8 @@
 <div class="hc-page">
   <header class="hc-header">
     <div class="hc-header__content">
-      <nav style="margin-bottom: 1rem;">
-        <%= link_to "← Back to Help Center", root_path, style: "color: white; text-decoration: none; opacity: 0.9;" %>
+      <nav>
+        <%= link_to "← Back to Help Center", root_path, class: "hc-back-link" %>
       </nav>
       <h1 class="hc-title" style="font-size: 2.5rem;"><%= @article[:title] %></h1>
       <p class="hc-subtitle" style="font-size: 0.9rem; opacity: 0.8;"><%= @article[:category] %></p>
