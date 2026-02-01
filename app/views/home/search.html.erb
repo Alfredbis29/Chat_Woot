@@ -1,6 +1,9 @@
 <div class="hc-page">
   <header class="hc-header">
     <div class="hc-header__content">
+      <nav>
+        <%= link_to "← Back to Help Center", root_path, class: "hc-back-link" %>
+      </nav>
       <h1 class="hc-title">Search Results</h1>
       <p class="hc-subtitle">Searching for: "<%= @query %>"</p>
     </div>
