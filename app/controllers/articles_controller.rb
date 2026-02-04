@@ -3,6 +3,7 @@ class ArticlesController < ApplicationController
     @slug = params[:slug]
     @article = get_article(@slug)
     @related_articles = get_related_articles(@slug, @article[:category])
+    @reading_time = calculate_reading_time(@article[:content])
   end
 
   private
@@ -59,5 +60,12 @@ class ArticlesController < ApplicationController
       'security-privacy' => { slug: 'security-privacy', title: 'Security & Privacy', category: 'Popular Topics' }
     }
     all_articles.select { |slug, article| slug != current_slug && article[:category] == category }.values.take(2)
+  end
+
+  def calculate_reading_time(content)
+    # Average reading speed is 200-250 words per minute
+    words = content.split(/\s+/).length
+    minutes = (words / 200.0).ceil
+    minutes < 1 ? 1 : minutes
   end
 end

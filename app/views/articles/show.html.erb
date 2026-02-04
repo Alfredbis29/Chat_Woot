@@ -5,8 +5,9 @@
         <%= link_to "← Back to Help Center", root_path, class: "hc-back-link" %>
       </nav>
       <h1 class="hc-title" style="font-size: 2.5rem;"><%= @article[:title] %></h1>
-      <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin-top: 0.5rem;">
+      <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-top: 0.75rem; align-items: center;">
         <span class="hc-tag"><%= @article[:category] %></span>
+        <span style="color: rgba(255, 255, 255, 0.8); font-size: 0.875rem;">⏱️ <%= @reading_time %> min read</span>
         <% if @article[:tags] %>
           <% @article[:tags].each do |tag| %>
             <span class="hc-tag hc-tag--secondary"><%= tag %></span>
