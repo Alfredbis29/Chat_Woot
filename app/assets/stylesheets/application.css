@@ -56,6 +56,30 @@ body {
   text-decoration: underline;
 }
 
+.hc-breadcrumb {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.hc-breadcrumb a {
+  color: #3b82f6;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.hc-breadcrumb a:hover {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+.hc-breadcrumb span {
+  color: #1e293b;
+  font-weight: 500;
+}
+
 .hc-title {
   font-size: 3rem;
   font-weight: 700;

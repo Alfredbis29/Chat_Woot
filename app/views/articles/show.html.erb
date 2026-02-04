@@ -12,6 +12,11 @@
   <main class="hc-main">
     <section class="hc-section">
       <article style="max-width: 800px; margin: 0 auto;">
+        <nav class="hc-breadcrumb" aria-label="Breadcrumb">
+          <%= link_to "Home", root_path %> / 
+          <%= link_to @article[:category], root_path(anchor: @article[:category].parameterize) %> / 
+          <span><%= @article[:title] %></span>
+        </nav>
         <div style="font-size: 1.125rem; line-height: 1.8; color: #334155;">
           <%= simple_format(@article[:content]) %>
         </div>
