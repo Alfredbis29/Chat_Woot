@@ -7,7 +7,7 @@
       </p>
 
       <%= form_with url: search_path, method: :get, local: true, class: "hc-search" do |form| %>
-        <%= form.search_field :q, placeholder: "Search for articles, topics, or questions...", aria: { label: "Search help center" } %>
+        <%= form.search_field :q, id: "search-input", placeholder: "Search for articles, topics, or questions... (Press / to focus)", aria: { label: "Search help center" } %>
         <%= form.submit "Search" %>
       <% end %>
     </div>
