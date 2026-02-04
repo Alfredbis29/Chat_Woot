@@ -16,3 +16,25 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+// Feedback widget handler
+function handleFeedback(type, slug) {
+  const messageEl = document.getElementById('feedback-message');
+  const messages = {
+    yes: 'Thank you for your feedback! We\'re glad this article was helpful.',
+    no: 'Thank you for your feedback. We\'ll work on improving this article.'
+  };
+  
+  messageEl.textContent = messages[type];
+  messageEl.style.display = 'block';
+  
+  // Disable buttons
+  document.querySelectorAll('.hc-feedback-btn').forEach(btn => {
+    btn.disabled = true;
+    btn.style.opacity = '0.6';
+    btn.style.cursor = 'not-allowed';
+  });
+  
+  // Store feedback (in a real app, this would be sent to a server)
+  console.log(`Feedback: ${type} for article: ${slug}`);
+}
