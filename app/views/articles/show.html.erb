@@ -5,7 +5,14 @@
         <%= link_to "← Back to Help Center", root_path, class: "hc-back-link" %>
       </nav>
       <h1 class="hc-title" style="font-size: 2.5rem;"><%= @article[:title] %></h1>
-      <p class="hc-subtitle" style="font-size: 0.9rem; opacity: 0.8;"><%= @article[:category] %></p>
+      <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin-top: 0.5rem;">
+        <span class="hc-tag"><%= @article[:category] %></span>
+        <% if @article[:tags] %>
+          <% @article[:tags].each do |tag| %>
+            <span class="hc-tag hc-tag--secondary"><%= tag %></span>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </header>
 
