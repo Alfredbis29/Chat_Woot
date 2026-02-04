@@ -1,0 +1,28 @@
+<div class="hc-page">
+  <header class="hc-header">
+    <div class="hc-header__content">
+      <nav>
+        <%= link_to "← Back to Help Center", root_path, class: "hc-back-link" %>
+      </nav>
+      <h1 class="hc-title">Browse by Category</h1>
+      <p class="hc-subtitle">Explore articles organized by topic</p>
+    </div>
+  </header>
+
+  <main class="hc-main">
+    <% @categories.each do |category_name, articles| %>
+      <section class="hc-section">
+        <h2 style="margin-top: 0; margin-bottom: 1.5rem; color: #1e293b; font-size: 1.5rem;"><%= category_name %></h2>
+        <div class="hc-grid">
+          <% articles.each do |article| %>
+            <article class="hc-card">
+              <h3><%= article[:title] %></h3>
+              <p>Learn more about <%= article[:title].downcase %> in ChatWoot.</p>
+              <%= link_to "Read article →", article_path(article[:slug]) %>
+            </article>
+          <% end %>
+        </div>
+      </section>
+    <% end %>
+  </main>
+</div>

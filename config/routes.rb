@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'categories/index'
   get 'home/index'
   get 'articles/:slug', to: 'articles#show', as: 'article'
   get 'search', to: 'home#search', as: 'search'
