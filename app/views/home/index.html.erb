@@ -7,7 +7,7 @@
       </p>
 
       <%= form_with url: search_path, method: :get, local: true, class: "hc-search" do |form| %>
-        <%= form.search_field :q, placeholder: "Search for articles, topics, or questions...", aria: { label: "Search help center" } %>
+        <%= form.search_field :q, id: "search-input", placeholder: "Search for articles, topics, or questions... (Press / to focus)", aria: { label: "Search help center" } %>
         <%= form.submit "Search" %>
       <% end %>
     </div>
@@ -58,7 +58,33 @@
   </main>
 
   <footer class="hc-footer">
-    <p>Can't find what you're looking for? <%= link_to "Contact support", contact_path %>.</p>
+    <div class="hc-footer__content">
+      <div class="hc-footer__section">
+        <h3>ChatWoot Help Center</h3>
+        <p>Your comprehensive guide to using ChatWoot effectively.</p>
+      </div>
+      <div class="hc-footer__section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><%= link_to "Getting Started", root_path %></li>
+          <li><%= link_to "Browse Categories", categories_path %></li>
+          <li><%= link_to "Search Articles", search_path %></li>
+          <li><%= link_to "Contact Support", contact_path %></li>
+        </ul>
+      </div>
+      <div class="hc-footer__section">
+        <h4>Connect</h4>
+        <div class="hc-footer__social">
+          <a href="https://github.com/chatwoot" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+          <a href="https://twitter.com/chatwoot" target="_blank" rel="noopener" aria-label="Twitter">Twitter</a>
+          <a href="https://discord.gg/chatwoot" target="_blank" rel="noopener" aria-label="Discord">Discord</a>
+        </div>
+      </div>
+    </div>
+    <div class="hc-footer__bottom">
+      <p>Can't find what you're looking for? <%= link_to "Contact support", contact_path %>.</p>
+      <p class="hc-footer__copyright">&copy; <%= Date.current.year %> ChatWoot. All rights reserved.</p>
+    </div>
   </footer>
 </div>
 
