@@ -20,6 +20,19 @@
         <div style="font-size: 1.125rem; line-height: 1.8; color: #334155;">
           <%= simple_format(@article[:content]) %>
         </div>
+        <% if @related_articles.any? %>
+          <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #e2e8f0;">
+            <h3 style="margin: 0 0 1rem; color: #1e293b; font-size: 1.25rem;">Related Articles</h3>
+            <div style="display: grid; gap: 1rem;">
+              <% @related_articles.each do |related| %>
+                <div style="padding: 1rem; background-color: #f8fafc; border-radius: 0.5rem; border: 1px solid #e2e8f0;">
+                  <%= link_to related[:title], article_path(related[:slug]), style: "color: #3b82f6; text-decoration: none; font-weight: 500; display: block;" %>
+                  <p style="margin: 0.5rem 0 0; font-size: 0.875rem; color: #64748b;"><%= related[:category] %></p>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
         <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #e2e8f0;">
           <%= link_to "← Back to Help Center", root_path, style: "color: #3b82f6; text-decoration: none; font-weight: 500;" %>
         </div>

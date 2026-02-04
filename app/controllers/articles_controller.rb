@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
   def show
     @slug = params[:slug]
     @article = get_article(@slug)
+    @related_articles = get_related_articles(@slug, @article[:category])
   end
 
   private
@@ -40,5 +41,17 @@ class ArticlesController < ApplicationController
       }
     }
     articles[slug] || { title: 'Article Not Found', content: 'The article you are looking for does not exist.', category: 'Error' }
+  end
+
+  def get_related_articles(current_slug, category)
+    all_articles = {
+      'create-first-inbox' => { slug: 'create-first-inbox', title: 'Create your first inbox', category: 'Getting Started' },
+      'invite-team' => { slug: 'invite-team', title: 'Invite your team', category: 'Getting Started' },
+      'setup-automation' => { slug: 'setup-automation', title: 'Set up automation', category: 'Getting Started' },
+      'reports-analytics' => { slug: 'reports-analytics', title: 'Reports & Analytics', category: 'Popular Topics' },
+      'integrations' => { slug: 'integrations', title: 'Integrations', category: 'Popular Topics' },
+      'security-privacy' => { slug: 'security-privacy', title: 'Security & Privacy', category: 'Popular Topics' }
+    }
+    all_articles.select { |slug, article| slug != current_slug && article[:category] == category }.values.take(2)
   end
 end
