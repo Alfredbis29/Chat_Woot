@@ -18,17 +18,17 @@
   </header>
 
   <main class="hc-main">
-    <section class="hc-section">
-      <article style="max-width: 800px; margin: 0 auto;">
+    <section class="hc-section hc-article">
+      <article class="hc-article__content">
         <nav class="hc-breadcrumb" aria-label="Breadcrumb">
           <%= link_to "Home", root_path %> / 
           <%= link_to @article[:category], root_path(anchor: @article[:category].parameterize) %> / 
           <span><%= @article[:title] %></span>
         </nav>
-        <div style="font-size: 1.125rem; line-height: 1.8; color: #334155;">
+        <div class="hc-article__body">
           <%= simple_format(@article[:content]) %>
         </div>
-        <div class="hc-feedback" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #e2e8f0;">
+        <div class="hc-feedback">
           <h3 style="margin: 0 0 1rem; color: #1e293b; font-size: 1.125rem;">Was this article helpful?</h3>
           <div style="display: flex; gap: 1rem;">
             <button class="hc-feedback-btn hc-feedback-btn--yes" onclick="handleFeedback('yes', '<%= @slug %>')">👍 Yes</button>
@@ -37,12 +37,12 @@
           <p id="feedback-message" style="margin: 1rem 0 0; color: #64748b; font-size: 0.875rem; display: none;"></p>
         </div>
         <% if @related_articles.any? %>
-          <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #e2e8f0;">
+          <div class="hc-related-articles">
             <h3 style="margin: 0 0 1rem; color: #1e293b; font-size: 1.25rem;">Related Articles</h3>
-            <div style="display: grid; gap: 1rem;">
+            <div class="hc-related-articles__list">
               <% @related_articles.each do |related| %>
-                <div style="padding: 1rem; background-color: #f8fafc; border-radius: 0.5rem; border: 1px solid #e2e8f0;">
-                  <%= link_to related[:title], article_path(related[:slug]), style: "color: #3b82f6; text-decoration: none; font-weight: 500; display: block;" %>
+                <div class="hc-related-article-item">
+                  <%= link_to related[:title], article_path(related[:slug]), class: "hc-related-article-link" %>
                   <p style="margin: 0.5rem 0 0; font-size: 0.875rem; color: #64748b;"><%= related[:category] %></p>
                 </div>
               <% end %>
