@@ -5,21 +5,62 @@
         <%= link_to "← Back to Help Center", root_path, class: "hc-back-link" %>
       </nav>
       <h1 class="hc-title">Search Results</h1>
-      <p class="hc-subtitle">Searching for: "<%= @query %>"</p>
+      <p class="hc-subtitle"><% if @query.present? %>Searching for: "<%= @query %>"<% else %>Enter a search term to find articles<% end %></p>
+      
+      <%= form_with url: search_path, method: :get, local: true, class: "hc-search" do |form| %>
+        <%= form.search_field :q, id: "search-input", placeholder: "Search articles...", value: @query %>
+        <%= form.submit "Search" %>
+      <% end %>
     </div>
   </header>
 
   <main class="hc-main">
     <section class="hc-section">
       <% if @query.present? %>
-        <p>Search functionality is coming soon. For now, browse our articles below:</p>
-      <% else %>
-        <p>Please enter a search term to find articles.</p>
-      <% end %>
+        <div class="hc-search-results">
+          <div style="margin-bottom: 2rem;">
+            <p style="color: #64748b; font-size: 1rem;">
+              <% if false # Replace with actual search results when implemented %>
+                Found <strong>X</strong> results for "<strong><%= @query %></strong>"
+              <% else %>
+                Search functionality is being implemented. Browse our categories below:
+              <% end %>
+            </p>
+          </div>
 
-      <div style="margin-top: 2rem;">
-        <%= link_to "← Back to Help Center", root_path, style: "color: #3b82f6; text-decoration: none; font-weight: 500;" %>
-      </div>
+          <div class="hc-grid">
+            <article class="hc-card">
+              <h3>Getting Started</h3>
+              <p>Learn the fundamentals and set up your account.</p>
+              <%= link_to "Browse articles →", root_path(anchor: "getting-started") %>
+            </article>
+            <article class="hc-card">
+              <h3>Features & Setup</h3>
+              <p>Configure and use ChatWoot features effectively.</p>
+              <%= link_to "Browse articles →", root_path(anchor: "features") %>
+            </article>
+            <article class="hc-card">
+              <h3>Integrations</h3>
+              <p>Connect ChatWoot with other tools and services.</p>
+              <%= link_to "Browse articles →", root_path(anchor: "integrations") %>
+            </article>
+            <article class="hc-card">
+              <h3>Troubleshooting</h3>
+              <p>Resolve common issues and get help.</p>
+              <%= link_to "Browse articles →", root_path(anchor: "troubleshooting") %>
+            </article>
+          </div>
+        </div>
+      <% else %>
+        <div class="hc-empty-state">
+          <div class="hc-empty-state__icon">🔍</div>
+          <h2 class="hc-empty-state__title">Start Searching</h2>
+          <p class="hc-empty-state__description">
+            Enter a search term above to find the articles you're looking for.
+          </p>
+          <p style="color: #64748b;">Or <%= link_to "browse categories", categories_path, style: "color: #667eea; text-decoration: none; font-weight: 500;" %> to explore our help center.</p>
+        </div>
+      <% end %>
     </section>
   </main>
 </div>
