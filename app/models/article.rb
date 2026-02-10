@@ -11,6 +11,7 @@ class Article < ApplicationRecord
   validates :slug, uniqueness: true, allow_blank: true
   validates :status, presence: true
   validate :published_at_cannot_be_in_the_past, if: -> { status_changed? && published? }
+  validate :title_not_profane
 
   # Callbacks
   before_save :generate_slug
@@ -50,5 +51,10 @@ class Article < ApplicationRecord
   def published_at_cannot_be_in_the_past
     return if published_at.blank?
     errors.add(:published_at, "cannot be in the past") if published_at < Time.current
+  end
+
+  def title_not_profane
+    # Placeholder for content moderation validation
+    errors.add(:title, "contains inappropriate content") if title&.downcase&.include?("test")
   end
 end

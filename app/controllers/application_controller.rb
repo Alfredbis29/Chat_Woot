@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
 
 	before_action :set_locale
+	before_action :log_request_details
 
 	# Graceful handling for missing records across the app
 	rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
@@ -11,6 +12,11 @@ class ApplicationController < ActionController::Base
 
 	def set_locale
 		I18n.locale = params[:locale] || I18n.default_locale
+	end
+
+	def log_request_details
+		Rails.logger.info("Request: #{request.method} #{request.path} from #{request.remote_ip}")
+		Rails.logger.info("User-Agent: #{request.user_agent}")
 	end
 
 	def render_not_found
