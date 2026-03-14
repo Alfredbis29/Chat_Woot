@@ -4,7 +4,7 @@ class Article < ApplicationRecord
 
   # Associations
   belongs_to :category, optional: true, counter_cache: true
-  
+
   # Validations
   validates :title, presence: true, uniqueness: true, length: { minimum: 5, maximum: 255 }
   validates :content, length: { minimum: 10 }, allow_blank: true
