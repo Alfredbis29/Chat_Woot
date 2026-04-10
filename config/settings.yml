@@ -25,9 +25,9 @@ pagination:
   default_order: "created_at DESC"
 
 performance:
-  cache_ttl: 3600
-  db_query_timeout: 30
-  max_upload_size_mb: 10
+  cache_ttl:          3600   # seconds — 1 hour
+  db_query_timeout:   30     # seconds — raise QueryTimeout if exceeded
+  max_upload_size_mb: 10     # maximum allowed file upload size
 
 security:
   password_min_length: 12
