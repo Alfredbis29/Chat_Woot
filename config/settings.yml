@@ -42,3 +42,6 @@ logging:
   include_params:   <%= !Rails.env.production? %>
   include_headers:  true
   log_to_stdout:    <%= Rails.env.production? %>
+storage:
+  provider:   <%= ENV.fetch("STORAGE_PROVIDER", "local") %>  # local | s3 | gcs
+  bucket:     <%= ENV.fetch("STORAGE_BUCKET", "chatwoot-dev") %>
