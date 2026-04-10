@@ -27,6 +27,7 @@ pagination:
 performance:
   cache_ttl: 3600
   db_query_timeout: 30
+  max_upload_size_mb: 10
 
 security:
   password_min_length: 12
