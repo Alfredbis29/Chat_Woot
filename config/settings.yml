@@ -34,6 +34,8 @@ security:
   password_max_length: 128
   session_timeout: 1800
   csrf_protection: true
+  max_login_attempts: 5
+  lockout_duration: 900
 
 logging:
   level: <%= Rails.env.production? ? 'info' : 'debug' %>
