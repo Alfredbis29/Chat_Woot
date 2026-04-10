@@ -38,7 +38,7 @@ security:
   lockout_duration:       900     # seconds — 15 minutes
 
 logging:
-  level: <%= Rails.env.production? ? 'info' : 'debug' %>
-  include_params: false
-  include_headers: true
-  log_to_stdout: <%= Rails.env.production? %>
+  level:            <%= Rails.env.production? ? "info" : "debug" %>
+  include_params:   <%= !Rails.env.production? %>
+  include_headers:  true
+  log_to_stdout:    <%= Rails.env.production? %>
