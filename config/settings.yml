@@ -30,12 +30,12 @@ performance:
   max_upload_size_mb: 10     # maximum allowed file upload size
 
 security:
-  password_min_length: 12
-  password_max_length: 128
-  session_timeout: 1800
-  csrf_protection: true
-  max_login_attempts: 5
-  lockout_duration: 900
+  password_min_length:    12
+  password_max_length:    128
+  session_timeout:        1800    # seconds — 30 minutes
+  csrf_protection:        true
+  max_login_attempts:     5       # lock account after N failed attempts
+  lockout_duration:       900     # seconds — 15 minutes
 
 logging:
   level: <%= Rails.env.production? ? 'info' : 'debug' %>
