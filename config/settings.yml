@@ -13,11 +13,11 @@ app:
   support_email: <%= ENV.fetch("SUPPORT_EMAIL", "support@chatwoot.com") %>
 
 features:
-  articles_enabled: true
-  categories_enabled: true
-  search_enabled: true
-  analytics_enabled: false
-  maintenance_mode: false
+  articles_enabled:    true
+  categories_enabled:  true
+  search_enabled:      true
+  analytics_enabled:   false
+  maintenance_mode:    false
 
 pagination:
   per_page: 20
