@@ -1,5 +1,9 @@
-# Application Configuration Settings
-# Environment-specific overrides can be set in settings.local.yml
+# =============================================================================
+# Application Configuration
+# =============================================================================
+# Environment-specific overrides should be defined in settings.local.yml
+# DO NOT commit secrets or credentials here — use credentials.yml.enc instead
+# =============================================================================
 
 app:
   name: "Chat_Woot"
