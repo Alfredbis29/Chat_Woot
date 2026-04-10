@@ -1,31 +1,47 @@
-# Application Configuration Settings
-# Environment-specific overrides can be set in settings.local.yml
+# =============================================================================
+# Application Configuration
+# =============================================================================
+# Environment-specific overrides should be defined in settings.local.yml
+# DO NOT commit secrets or credentials here — use credentials.yml.enc instead
+# =============================================================================
 
 app:
-  name: "Chat_Woot"
+  name: "ChatWoot"
   version: "1.0.0"
   environment: <%= Rails.env %>
+  base_url: <%= ENV.fetch("APP_BASE_URL", "http://localhost:3000") %>
+  support_email: <%= ENV.fetch("SUPPORT_EMAIL", "support@chatwoot.com") %>
 
 features:
-  articles_enabled: true
-  categories_enabled: true
-  search_enabled: true
-  analytics_enabled: false
+  articles_enabled:    true
+  categories_enabled:  true
+  search_enabled:      true
+  analytics_enabled:   false
+  maintenance_mode:    false
 
 pagination:
-  per_page: 20
-  max_per_page: 100
+  per_page:       20
+  max_per_page:   100
+  default_order:  "created_at DESC"
 
 performance:
-  cache_ttl: 3600
-  db_query_timeout: 30
+  cache_ttl:          3600   # seconds — 1 hour
+  db_query_timeout:   30     # seconds — raise QueryTimeout if exceeded
+  max_upload_size_mb: 10     # maximum allowed file upload size
 
 security:
-  password_min_length: 12
-  session_timeout: 1800
-  csrf_protection: true
+  password_min_length:    12
+  password_max_length:    128
+  session_timeout:        1800    # seconds — 30 minutes
+  csrf_protection:        true
+  max_login_attempts:     5       # lock account after N failed attempts
+  lockout_duration:       900     # seconds — 15 minutes
 
 logging:
-  level: <%= Rails.env.production? ? 'info' : 'debug' %>
-  include_params: false
-  include_headers: true
+  level:            <%= Rails.env.production? ? "info" : "debug" %>
+  include_params:   <%= !Rails.env.production? %>
+  include_headers:  true
+  log_to_stdout:    <%= Rails.env.production? %>
+storage:
+  provider:   <%= ENV.fetch("STORAGE_PROVIDER", "local") %>  # local | s3 | gcs
+  bucket:     <%= ENV.fetch("STORAGE_BUCKET", "chatwoot-dev") %>
