@@ -31,6 +31,7 @@ performance:
 
 security:
   password_min_length: 12
+  password_max_length: 128
   session_timeout: 1800
   csrf_protection: true
 
