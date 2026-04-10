@@ -41,3 +41,4 @@ logging:
   level: <%= Rails.env.production? ? 'info' : 'debug' %>
   include_params: false
   include_headers: true
+  log_to_stdout: <%= Rails.env.production? %>
