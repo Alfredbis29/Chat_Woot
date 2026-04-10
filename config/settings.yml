@@ -22,6 +22,7 @@ features:
 pagination:
   per_page: 20
   max_per_page: 100
+  default_order: "created_at DESC"
 
 performance:
   cache_ttl: 3600
