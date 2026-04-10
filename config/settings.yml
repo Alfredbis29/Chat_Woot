@@ -9,6 +9,8 @@ app:
   name: "ChatWoot"
   version: "1.0.0"
   environment: <%= Rails.env %>
+  base_url: <%= ENV.fetch("APP_BASE_URL", "http://localhost:3000") %>
+  support_email: <%= ENV.fetch("SUPPORT_EMAIL", "support@chatwoot.com") %>
 
 features:
   articles_enabled: true
