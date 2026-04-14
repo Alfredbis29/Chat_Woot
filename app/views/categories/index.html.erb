@@ -4,8 +4,15 @@
       <nav>
         <%= link_to "← Back to Help Center", root_path, class: "hc-back-link" %>
       </nav>
-      <h1 class="hc-title">Browse by Category</h1>
-      <p class="hc-subtitle">Explore articles organized by topic</p>
+      <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;">
+        <div>
+          <h1 class="hc-title">Browse by Category</h1>
+          <p class="hc-subtitle">Explore categories and organize your support content.</p>
+        </div>
+        <div>
+          <%= link_to "Create Category", new_category_path, class: "hc-btn hc-btn--primary" %>
+        </div>
+      </div>
       
       <%= form_with url: search_path, method: :get, local: true, class: "hc-search" do |form| %>
         <%= form.search_field :q, id: "search-input", placeholder: "Quick search..." %>
