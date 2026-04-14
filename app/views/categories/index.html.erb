@@ -23,29 +23,17 @@
 
   <main class="hc-main">
     <% if @categories.any? %>
-      <% @categories.each_with_index do |(category_name, articles), index| %>
-        <section class="hc-section" style="animation: fadeIn 0.5s ease-in-out; animation-delay: <%= index * 0.1 %>s;">
-          <h2 style="margin-top: 0; margin-bottom: 1.5rem; color: #1e293b; font-size: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
-            <span style="display: inline-flex; width: 32px; height: 32px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 0.5rem; align-items: center; justify-content: center; color: white; font-size: 1rem;">
-              <%= ['📚', '🔧', '🔗', '❓', '🛡️', '⚙️', '📊', '🚀'][index % 8] %>
-            </span>
-            <%= category_name %>
-          </h2>
-          <p style="color: #64748b; font-size: 0.95rem; margin: 0 0 1.5rem;">
-            Explore <strong><%= articles.count %></strong> article<%= articles.count == 1 ? '' : 's' %> about <%= category_name.downcase %>
-          </p>
-          <div class="hc-grid">
-            <% articles.each do |article| %>
-              <article class="hc-card" role="link" tabindex="0" @click="goToArticle('<%= article_path(article[:slug]) %>')" style="cursor: pointer;">
-                <h3><%= article[:title] %></h3>
-                <p><%= article[:description] || "Learn more about #{article[:title].downcase} in ChatWoot." %></p>
-                <%= link_to "Read article →", article_path(article[:slug]) %>
-              </article>
-            <% end %>
-          </div>
-        </section>
-      <% end %>
-      
+      <div class="hc-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+        <% @categories.each do |category| %>
+          <section class="hc-card" style="animation: fadeIn 0.4s ease-in-out;">
+            <h2><%= category.name %></h2>
+            <p style="color: #64748b; margin-bottom: 1rem;"><%= category.description.presence || "No description available yet." %></p>
+            <p style="margin: 0.5rem 0; font-weight: 600; color: #0f172a;">Articles: <%= category.articles_count %></p>
+            <p style="margin: 0.5rem 0; color: #475569;">Slug: <%= category.slug %></p>
+          </section>
+        <% end %>
+      </div>
+
       <style>
         @keyframes fadeIn {
           from {
