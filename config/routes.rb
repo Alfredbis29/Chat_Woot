@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'articles/:slug', to: 'articles#show', as: 'article'
   get 'search', to: 'home#search', as: 'search'
   get 'contact', to: 'home#contact', as: 'contact'
-  get 'categories', to: 'categories#index', as: 'categories'
+  resources :categories, only: [:index, :new, :create]
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
