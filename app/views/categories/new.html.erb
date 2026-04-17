@@ -1,0 +1,43 @@
+<div class="hc-page">
+  <header class="hc-header">
+    <div class="hc-header__content">
+      <nav>
+        <%= link_to "← Back to Categories", categories_path, class: "hc-back-link" %>
+      </nav>
+      <h1 class="hc-title">Create a New Category</h1>
+      <p class="hc-subtitle">Add a category to organize articles and support content.</p>
+    </div>
+  </header>
+
+  <main class="hc-main">
+    <div class="hc-card" style="max-width: 640px; margin: 0 auto; padding: 2rem;">
+      <%= form_with model: @category, local: true do |form| %>
+        <% if @category.errors.any? %>
+          <div class="hc-alert hc-alert--error" style="margin-bottom: 1.5rem;">
+            <h2><%= pluralize(@category.errors.count, "error") %> prevented this category from being saved:</h2>
+            <ul>
+              <% @category.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="hc-form-group" style="margin-bottom: 1rem;">
+          <%= form.label :name, "Category name", class: "hc-label" %>
+          <%= form.text_field :name, class: "hc-input", autofocus: true, required: true %>
+        </div>
+
+        <div class="hc-form-group" style="margin-bottom: 1rem;">
+          <%= form.label :description, "Description", class: "hc-label" %>
+          <%= form.text_area :description, class: "hc-textarea", rows: 4 %>
+        </div>
+
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+          <%= form.submit "Create Category", class: "hc-btn hc-btn--primary" %>
+          <%= link_to "Cancel", categories_path, class: "hc-btn hc-btn--secondary" %>
+        </div>
+      <% end %>
+    </div>
+  </main>
+</div>
