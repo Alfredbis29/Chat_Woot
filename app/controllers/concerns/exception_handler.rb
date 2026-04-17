@@ -12,7 +12,6 @@ module ExceptionHandler
   def handle_standard_error(exception)
     Rails.logger.error("Unhandled Exception: #{exception.class} - #{exception.message}")
     Rails.logger.error(exception.backtrace.join("\n")) if Rails.env.development?
-    
     render json: {
       error: "An unexpected error occurred",
       status: 500
@@ -21,7 +20,7 @@ module ExceptionHandler
 
   def handle_validation_error(exception)
     Rails.logger.warn("Validation Error: #{exception.record.errors.full_messages}")
-    
+
     render json: {
       error: "Validation failed",
       details: exception.record.errors.full_messages,
