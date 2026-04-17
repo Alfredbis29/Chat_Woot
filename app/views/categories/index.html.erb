@@ -51,10 +51,10 @@
         <div class="hc-empty-state__icon">📁</div>
         <h2 class="hc-empty-state__title">No Categories Found</h2>
         <p class="hc-empty-state__description">
-          There are no categories available at the moment.
+          There are no categories available yet. Create one to start organizing your help center.
         </p>
         <p style="margin-top: 1.5rem;">
-          <%= link_to "← Back to Help Center", root_path, class: "hc-btn hc-btn--primary" %>
+          <%= link_to "Create Category", new_category_path, class: "hc-btn hc-btn--primary" %>
         </p>
       </div>
     <% end %>
