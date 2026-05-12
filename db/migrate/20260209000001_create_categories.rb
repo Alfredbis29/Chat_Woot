@@ -1,5 +1,3 @@
-# db/migrate/YYYYMMDDHHMMSS_create_categories.rb
-
 class CreateCategories < ActiveRecord::Migration[7.0]
   def change
     create_table :categories do |t|
@@ -21,7 +19,7 @@ class CreateCategories < ActiveRecord::Migration[7.0]
     add_index :categories, :slug, unique: true
     add_index :categories, :name, unique: true
 
-    # Optimize filtering of active (non-archived) categories
+   # Optimize filtering of active (non-archived) categories
     add_index :categories, :archived_at
   end
 end
