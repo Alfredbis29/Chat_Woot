@@ -30,10 +30,14 @@ module ExceptionHandler
 
   def handle_argument_error(exception)
     Rails.logger.warn("Argument Error: #{exception.message}")
-    
+
     render json: {
       error: "Invalid argument provided",
       status: 400
     }, status: :bad_request
   end
+  render json: {
+    error: "the requested resource was not found",
+    status: 404
+  }
 end
